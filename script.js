@@ -18,22 +18,21 @@ class user{
   }
 }
 
+//funcion para mostrar el dinero del usuario
+function showMeTheMoneyFunc(usuario){
+  alert(usuario.name + " tiene: " + usuario.money + " euros.");
+}
+
 //funcion fetch para sacar datos del json
 fetch("users.json")
   .then(response => response.json())
   .then(data => {
     for(let i=0; i<data.length; i++){
+      //instancia de usuarios
       let usuario=new user(data[i].name,data[i].money,data[i].showMeTheMoneyFunc)
+      //añadimos usuarios al array
       users.push(usuario);
     }
-    
-    console.log(users);
+    //llamada a la función que muestra el dinero del tercer usuario 
+    showMeTheMoneyFunc(users[2]);
   } );
-
-  //funcion para mostrar el dinero del usuario
-  function showMeTheMoneyFunc(usuario){
-    alert(usuario.money);
-  }
-
- showMeTheMoneyFunc(users[2]);
-
